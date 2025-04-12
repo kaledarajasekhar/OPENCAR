@@ -13,6 +13,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -60,6 +61,11 @@ public class OrangeHrm {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(p.getProperty("appurl"));
 		driver.manage().window().maximize();
+	}
+
+	@AfterMethod
+	public void timeGap() throws InterruptedException {
+		Thread.sleep(5000);
 	}
 
 	@AfterClass(groups = { "sanity", "regression", "master" })
